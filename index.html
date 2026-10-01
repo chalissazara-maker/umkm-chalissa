@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SweetBite - Dessert & Makanan Manis</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Google Fonts: Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --pink-pastel: #ffb7b2;
+            --pink-light: #ffe8e7;
+            --cream: #fdf6ec;
+            --brown-soft: #8d6e63;
+            --brown-dark: #5d4037;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--cream);
+            color: var(--brown-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navbar Customization */
+        .navbar {
+            background-color: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--brown-dark) !important;
+            font-size: 1.5rem;
+        }
+
+        .navbar-brand span {
+            color: #e57373;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--brown-dark) !important;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #e57373 !important;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--pink-light) 0%, var(--cream) 100%);
+            padding: 90px 0;
+            border-bottom-left-radius: 50px;
+            border-bottom-right-radius: 50px;
+        }
+
+        .hero-title {
+            font-weight: 700;
+            color: var(--brown-dark);
+        }
+
+        .hero-slogan {
+            color: #e57373;
+            font-weight: 600;
+        }
+
+        .hero-img {
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(93, 64, 55, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-img:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Buttons */
+        .btn-custom-primary {
+            background-color: #e57373;
+            color: var(--white);
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 500;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .btn-custom-primary:hover {
+            background-color: #d35f5f;
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(229, 115, 115, 0.3);
+        }
+
+        .btn-custom-outline {
+            border: 2px solid #e57373;
+            color: #e57373;
+            border-radius: 30px;
+            padding: 10px 25px;
+            font-weight: 500;
+            background: transparent;
+            transition: all 0.3s;
+        }
+
+        .btn-custom-outline:hover {
+            background-color: #e57373;
+            color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-weight: 700;
+            color: var(--brown-dark);
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .section-subtitle {
+            color: var(--brown-soft);
+            margin-bottom: 40px;
+        }
+
+        /* Product Cards */
+        .card-product {
+            border: none;
+            border-radius: 15px;
+            background: var(--white);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .card-product:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(93, 64, 55, 0.1);
+        }
+
+        .card-product img {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            transition: transform 0.5s ease;
+        }
+
+        .card-product:hover img {
+            transform: scale(1.05);
+        }
+
+        .product-price {
+            color: #e57373;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* Tentang Kami */
+        .about-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+
+        .feature-item {
+            font-weight: 500;
+            color: var(--brown-dark);
+            margin-bottom: 12px;
+        }
+
+        .feature-item i {
+            color: #e57373;
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Cara Pemesanan */
+        .step-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+            height: 100%;
+            transition: transform 0.3s;
+        }
+
+        .step-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--pink-light);
+            color: #e57373;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin: 0 auto 20px auto;
+        }
+
+        /* Checkout Form & Contact */
+        .form-control, .form-select {
+            border-radius: 10px;
+            padding: 12px;
+            border: 1px solid #ddd;
+            background-color: var(--cream);
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: #e57373;
+            box-shadow: 0 0 0 0.2rem rgba(229, 115, 115, 0.25);
+            background-color: var(--white);
+        }
+
+        .contact-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--brown-dark);
+            color: var(--white);
+            padding: 40px 0 20px 0;
+        }
+
+        footer a {
+            color: var(--pink-light);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--white);
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+        }
+
+        /* Badge Cart Counter */
+        .cart-badge {
+            font-size: 0.75rem;
+            padding: 0.25em 0.5em;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 1. NAVBAR -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Sweet<span>Bite</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#beranda">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#menu">Menu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#tentang">Tentang Kami</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#pemesanan">Cara Pemesanan</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#checkout">Checkout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#kontak">Kontak</a></li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <button class="btn btn-custom-outline position-relative" data-bs-toggle="modal" data-bs-target="#cartModal">
+                            <i class="bi bi-cart3"></i> Keranjang
+                            <span id="cartCount" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger cart-badge">0</span>
+                        </button>
+                    </li>
+                    <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
+                        <a href="#checkout" class="btn btn-custom-primary">Pesan Sekarang</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 2. HERO SECTION / BERANDA -->
+    <section id="beranda" class="hero-section mt-5 pt-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <span class="hero-slogan fs-5">"Manisnya Bikin Hari Lebih Bahagia!"</span>
+                    <h1 class="hero-title display-4 my-3">Nikmati Dessert Lezat & Manis Setiap Hari</h1>
+                    <p class="text-muted mb-4 lead">Nikmati berbagai dessert lezat yang dibuat dengan bahan berkualitas dan penuh perhatian khusus untuk kamu.</p>
+                    <div class="d-flex gap-3">
+                        <a href="#menu" class="btn btn-custom-primary">Lihat Menu</a>
+                        <a href="#checkout" class="btn btn-custom-outline">Pesan Sekarang</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="ikonsb.jpeg" alt="SweetBite Dessert" class="img-fluid hero-img">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. MENU DESSERT -->
+    <section id="menu" class="py-5">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Menu Dessert Kami</h2>
+                <p class="section-subtitle">Pilihan dessert favorit yang manis, lembut, dan bikin ketagihan.</p>
+            </div>
+            <div class="row g-4" id="productList">
+                <!-- Data produk dimuat otomatis melalui JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. KERANJANG BELANJA (MODAL) -->
+    <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content border-0 shadow" style="border-radius: 20px;">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title fw-bold"><i class="bi bi-cart3 text-danger"></i> Keranjang Belanja</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cartItemsContainer">
+                        <!-- Item keranjang dimasukkan via JavaScript -->
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center mt-4 pt-3 border-top">
+                        <h5 class="fw-bold mb-0">Total Harga:</h5>
+                        <h4 class="fw-bold text-danger mb-0" id="cartModalTotal">Rp0</h4>
+                    </div>
+                </div>
+                <div class="modal-footer border-0 pt-0">
+                    <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-custom-primary" onclick="proceedToCheckout()" data-bs-dismiss="modal">Lanjut ke Checkout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 6. TENTANG KAMI -->
+    <section id="tentang" class="py-5 bg-white my-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="sweetbite.jpeg" alt="Tentang SweetBite" class="img-fluid rounded-4 shadow-sm">
+                </div>
+                <div class="col-lg-6">
+                    <h2 class="section-title">Tentang SweetBite</h2>
+                    <p class="text-muted mb-4">
+                        SweetBite adalah UMKM yang menyediakan berbagai macam dessert lezat dengan bahan berkualitas. Kami berusaha menghadirkan dessert yang tidak hanya enak, tetapi juga memiliki tampilan menarik dan cocok dinikmati bersama keluarga maupun teman.
+                    </p>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="feature-item"><i class="bi bi-check-circle-fill"></i> Fresh setiap hari</div>
+                            <div class="feature-item"><i class="bi bi-check-circle-fill"></i> Bahan berkualitas</div>
+                            <div class="feature-item"><i class="bi bi-check-circle-fill"></i> Harga terjangkau</div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="feature-item"><i class="bi bi-check-circle-fill"></i> Bisa custom</div>
+                            <div class="feature-item"><i class="bi bi-check-circle-fill"></i> Kemasan aman & menarik</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. CARA PEMESANAN -->
+    <section id="pemesanan" class="py-5">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Cara Pemesanan</h2>
+                <p class="section-subtitle">Ikuti 4 langkah mudah untuk memesan dessert favoritmu.</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3 col-sm-6">
+                    <div class="step-card">
+                        <div class="step-icon"><i class="bi bi-search"></i></div>
+                        <h5 class="fw-bold mb-2">1. Pilih Dessert</h5>
+                        <p class="text-muted small mb-0">Pilih produk yang kamu inginkan dari daftar menu kami.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="step-card">
+                        <div class="step-icon"><i class="bi bi-bag-plus"></i></div>
+                        <h5 class="fw-bold mb-2">2. Masukkan Keranjang</h5>
+                        <p class="text-muted small mb-0">Tentukan jumlah produk yang ingin kamu beli.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="step-card">
+                        <div class="step-icon"><i class="bi bi-file-earmark-text"></i></div>
+                        <h5 class="fw-bold mb-2">3. Checkout</h5>
+                        <p class="text-muted small mb-0">Isi nama, nomor WhatsApp, alamat, dan catatan pesanan.</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="step-card">
+                        <div class="step-icon"><i class="bi bi-whatsapp"></i></div>
+                        <h5 class="fw-bold mb-2">4. Konfirmasi</h5>
+                        <p class="text-muted small mb-0">Pesanan akan dikonfirmasi otomatis melalui WhatsApp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. FORM PEMESANAN / CHECKOUT -->
+    <section id="checkout" class="py-5 bg-white my-5">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-title">Form Pemesanan / Checkout</h2>
+                <p class="section-subtitle">Lengkapi data diri kamu untuk menyelesaikan pesanan.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="about-box">
+                        <form id="checkoutForm">
+                            <div class="mb-3">
+                                <label for="nama" class="form-label fw-medium">Nama Lengkap</label>
+                                <input type="text" class="form-control" id="nama" placeholder="Masukkan nama lengkap" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="whatsapp" class="form-label fw-medium">Nomor WhatsApp</label>
+                                <input type="tel" class="form-control" id="whatsapp" placeholder="Contoh: 081234567890" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="alamat" class="form-label fw-medium">Alamat Lengkap</label>
+                                <textarea class="form-control" id="alamat" rows="3" placeholder="Masukkan alamat pengiriman lengkap" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="catatan" class="form-label fw-medium">Catatan Pesanan (Opsional)</label>
+                                <input type="text" class="form-control" id="catatan" placeholder="Contoh: Jangan terlalu manis, extra saus">
+                            </div>
+                            
+                            <div class="card bg-light border-0 p-3 mb-4 rounded-3">
+                                <h6 class="fw-bold mb-2"><i class="bi bi-receipt"></i> Ringkasan Pesanan Anda</h6>
+                                <div id="checkoutSummaryList" class="small text-muted mb-2">
+                                    Keranjang masih kosong. Silakan tambah produk terlebih dahulu.
+                                </div>
+                                <div class="d-flex justify-content-between fw-bold pt-2 border-top">
+                                    <span>Total Pembayaran:</span>
+                                    <span class="text-danger" id="checkoutTotalPrice">Rp0</span>
+                                </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-custom-primary w-100 py-3 fw-bold">
+                                <i class="bi bi-whatsapp"></i> Pesan Sekarang via WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. KONTAK -->
+    <section id="kontak" class="py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <div class="contact-box">
+                        <h2 class="section-title">Hubungi Kami</h2>
+                        <p class="section-subtitle">Ada pertanyaan atau ingin kerja sama? Hubungi kami melalui kontak di bawah ini.</p>
+                        
+                        <div class="row g-3 mb-4 text-start justify-content-center">
+                            <div class="col-md-6">
+                                <p class="mb-2"><i class="bi bi-whatsapp text-danger fs-5 me-2"></i> <strong>WhatsApp:</strong> 08388990500</p>
+                                <p class="mb-2"><i class="bi bi-instagram text-danger fs-5 me-2"></i> <strong>Instagram:</strong> @sweetbite.id</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p class="mb-2"><i class="bi bi-geo-alt-fill text-danger fs-5 me-2"></i> <strong>Alamat:</strong> Jl. Jalani aja dulu No. 12, Jakarta</p>
+                                <p class="mb-2"><i class="bi bi-clock-fill text-danger fs-5 me-2"></i> <strong>Jam Buka:</strong> 09.00 – 21.00 WIB</p>
+                            </div>
+                        </div>
+
+                        <a href="https://wa.me/628388990500?text=Halo%20SweetBite,%20saya%20ingin%20melakukan%20pemesanan." target="_blank" class="btn btn-custom-primary px-4 py-3">
+                            <i class="bi bi-whatsapp"></i> Chat WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. FOOTER -->
+    <footer>
+        <div class="container text-center">
+            <h4 class="fw-bold mb-2">Sweet<span>Bite</span></h4>
+            <p class="text-white-50 mb-3">"Manisnya Bikin Hari Lebih Bahagia!"</p>
+            <div class="mb-3">
+                <a href="#" class="social-icon"><i class="bi bi-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="bi bi-whatsapp"></i></a>
+
+            </div>
+            <hr class="border-secondary my-4">
+            <p class="small text-white-50 mb-0">&copy; 2026 SweetBite. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JAVASCRIPT INTERAKTIF -->
+    <script>
+        // Data Produk Dessert
+        const products = [
+            { id: 1, name: "Chocolate Cake", desc: "Cake cokelat lembut dengan rasa cokelat yang kaya.", price: 25000, img: "chocolate-cake.jpeg" },
+            { id: 2, name: "Strawberry Cake", desc: "Cake lembut dengan perpaduan strawberry yang segar.", price: 27000, img: "strawberry-cake.jpeg" },
+            { id: 3, name: "Brownies", desc: "Brownies cokelat lembut dengan tekstur fudgy.", price: 20000, img: "brownies.jpeg" },
+            { id: 4, name: "Dessert Jar", desc: "Dessert berlapis dengan rasa manis dan creamy.", price: 22000, img: "redvelvet-dessertjar.jpeg" },
+            { id: 5, name: "Pudding", desc: "Pudding lembut dengan rasa manis yang ringan.", price: 15000, img: "pudding.jpeg" },
+            { id: 6, name: "Biscoof Cheesecake", desc: "Cheesecake creamy dengan rasa keju yang lembut dipadu dengan rasa biscoof yang manis.", price: 28000, img: "biscoof-cheesecake.jpeg" },
+            { id: 7, name: "Cookies", desc: "Cookies renyah dengan rasa manis cokelat yang pas.", price: 18000, img: "cookies.jpeg" },
+            { id: 8, name: "Banana Pudding", desc: "Pudding pisang creamy dengan potongan pisang.", price: 20000, img: "bananapudding.jpeg" }
+        ];
+
+        let cart = [];
+
+        // Render Produk ke HTML
+        function renderProducts() {
+            const productList = document.getElementById('productList');
+            productList.innerHTML = '';
+            products.forEach(product => {
+                productList.innerHTML += `
+                    <div class="col-lg-3 col-md-4 col-sm-6">
+                        <div class="card card-product h-100">
+                            <img src="${product.img}" class="card-img-top" alt="${product.name}">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title fw-bold">${product.name}</h5>
+                                <p class="card-text text-muted small flex-grow-1">${product.desc}</p>
+                                <div class="d-flex justify-content-between align-items-center mt-3">
+                                    <span class="product-price">Rp${product.price.toLocaleString('id-ID')}</span>
+                                    <button class="btn btn-custom-primary btn-sm" onclick="addToCart(${product.id})">
+                                        <i class="bi bi-cart-plus"></i> Tambah
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        // Tambah Produk ke Keranjang
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            const cartItem = cart.find(item => item.id === productId);
+
+            if (cartItem) {
+                cartItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        // Ubah Jumlah Produk di Keranjang (+ / -)
+        function changeQuantity(productId, amount) {
+            const cartItem = cart.find(item => item.id === productId);
+            if (cartItem) {
+                cartItem.quantity += amount;
+                if (cartItem.quantity <= 0) {
+                    cart = cart.filter(item => item.id !== productId);
+                }
+            }
+            updateCart();
+        }
+
+        // Hapus Item dari Keranjang
+        function removeFromCart(productId) {
+            cart = cart.filter(item => item.id !== productId);
+            updateCart();
+        }
+
+        // Update Tampilan Keranjang & Checkout Summary
+        function updateCart() {
+            const cartCount = document.getElementById('cartCount');
+            const cartItemsContainer = document.getElementById('cartItemsContainer');
+            const cartModalTotal = document.getElementById('cartModalTotal');
+            const checkoutSummaryList = document.getElementById('checkoutSummaryList');
+            const checkoutTotalPrice = document.getElementById('checkoutTotalPrice');
+
+            let totalItems = 0;
+            let totalPrice = 0;
+
+            // Hitung Badge Navbar
+            cart.forEach(item => totalItems += item.quantity);
+            cartCount.innerText = totalItems;
+
+            // Render Isi Modal Keranjang
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = `<p class="text-center text-muted py-3 my-0">Keranjang kamu masih kosong.</p>`;
+                checkoutSummaryList.innerHTML = `Keranjang kamu masih kosong. Silakan tambah produk terlebih dahulu.`;
+            } else {
+                let htmlModal = '';
+                let htmlSummary = '';
+
+                cart.forEach(item => {
+                    let subtotal = item.price * item.quantity;
+                    totalPrice += subtotal;
+
+                    htmlModal += `
+                        <div class="d-flex justify-content-between align-items-center mb-3 pb-2 border-bottom">
+                            <div>
+                                <h6 class="fw-bold mb-0">${item.name}</h6>
+                                <small class="text-muted">Rp${item.price.toLocaleString('id-ID')} x ${item.quantity}</small>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <button class="btn btn-sm btn-outline-secondary px-2 py-0" onclick="changeQuantity(${item.id}, -1)">-</button>
+                                <span class="fw-bold">${item.quantity}</span>
+                                <button class="btn btn-sm btn-outline-secondary px-2 py-0" onclick="changeQuantity(${item.id}, 1)">+</button>
+                                <button class="btn btn-sm text-danger ms-2" onclick="removeFromCart(${item.id})"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </div>
+                    `;
+
+                    htmlSummary += `<div class="d-flex justify-content-between mb-1"><span>${item.name} (${item.quantity}x)</span> <span>Rp${subtotal.toLocaleString('id-ID')}</span></div>`;
+                });
+
+                cartItemsContainer.innerHTML = htmlModal;
+                checkoutSummaryList.innerHTML = htmlSummary;
+            }
+
+            cartModalTotal.innerText = `Rp${totalPrice.toLocaleString('id-ID')}`;
+            checkoutTotalPrice.innerText = `Rp${totalPrice.toLocaleString('id-ID')}`;
+        }
+
+        // Pindah dari Modal ke Form Checkout
+        function proceedToCheckout() {
+            const checkoutSection = document.getElementById('checkout');
+            checkoutSection.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Proses Form Checkout & Kirim ke WhatsApp
+        document.getElementById('checkoutForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            if (cart.length === 0) {
+                alert('Keranjang kamu masih kosong! Silakan pilih menu terlebih dahulu.');
+                return;
+            }
+
+            const nama = document.getElementById('nama').value;
+            const whatsapp = document.getElementById('whatsapp').value;
+            const alamat = document.getElementById('alamat').value;
+            const catatan = document.getElementById('catatan').value || '-';
+
+            let pesan = `Halo SweetBite, saya ingin melakukan pemesanan:%0A%0A`;
+            pesan += `*Data Pemesan:*%0A`;
+            pesan += `- Nama: ${nama}%0A`;
+            pesan += `- No. WhatsApp: ${whatsapp}%0A`;
+            pesan += `- Alamat: ${alamat}%0A`;
+            pesan += `- Catatan: ${catatan}%0A%0A`;
+            pesan += `*Detail Pesanan:*%0A`;
+
+            let totalPrice = 0;
+            cart.forEach(item => {
+                let subtotal = item.price * item.quantity;
+                totalPrice += subtotal;
+                pesan += `- ${item.name} (${item.quantity}x) : Rp${subtotal.toLocaleString('id-ID')}%0A`;
+            });
+
+            pesan += `%0A*Total Pembayaran: Rp${totalPrice.toLocaleString('id-ID')}*%0A%0ATolong segera diproses ya, terima kasih!`;
+
+            // Buka Link WhatsApp
+            const noAdmin = "628388990500"; // Nomor WhatsApp Toko
+            window.open(`https://wa.me/${noAdmin}?text=${pesan}`, '_blank');
+        });
+
+        // Jalankan saat halaman dimuat
+        window.onload = function() {
+            renderProducts();
+        };
+    </script>
+</body>
+</html>
